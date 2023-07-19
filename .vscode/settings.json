@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "globaldefine.h": "c",
+        "lan.h": "c",
+        "com.h": "c",
+        "typeinfo": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
