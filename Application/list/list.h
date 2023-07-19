@@ -75,3 +75,13 @@ STLinkBook  *FindList(STLinkBook *phead,char *name);
      返回值：头结点地址
 */
 STLinkBook  *FindNodeDelete(STLinkBook *phead,int num);
+
+/* 描述：在链表的i位置前（后）插入新结点
+     输入： STLinkBook *phead：头结点;
+                    int pos：限定条件（位置）;
+                    int method：限定条件（0：前或1：后）
+                    STLinkBook *pInsert：待插入的结点
+     输出：
+     返回值：头结点地址
+*/
+STLinkBook  *InsertNode(STLinkBook *phead,STLinkBook *pInsert,int pos,int method);

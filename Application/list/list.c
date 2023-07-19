@@ -166,9 +166,7 @@ STLinkBook  *FindNodeDelete(STLinkBook *phead,int num)
                pTemp->next = NULL;
                free(pTemp);
                return phead;
-          }
-            
-             
+          }          
                         
      }
 
@@ -178,4 +176,69 @@ STLinkBook  *FindNodeDelete(STLinkBook *phead,int num)
           return phead;
      }
 
+}
+
+/* 描述：在链表的i位置前（后）插入新结点
+     输入： STLinkBook *phead：头结点;
+                    int pos：限定条件（位置）;
+                    int method：限定条件（0：前或1：后）
+                    STLinkBook *pInsert：待插入的结点
+     输出：
+     返回值：头结点地址
+*/
+STLinkBook  *InsertNode(STLinkBook *phead,STLinkBook *pInsert,int pos,int method)
+{
+          STLinkBook *pTemp = phead,*pre = NULL;
+          STLinkBook *L = ( STLinkBook *)malloc(sizeof( STLinkBook )); // 头指针
+          L->next = phead;  // 添加一个虚拟的前置结点
+          
+          if(phead == NULL)
+               return phead;
+          
+          for(int i = 0;i<pos;i++)
+          {
+               
+               pre = L;
+               L = L->next;
+               if(L== NULL)
+               {
+                    printf("当前待插入的链表长度为%d小于%d，请重新选择插入的位置！\n",i,pos);
+                    return phead;
+               }
+               // 
+               if(i == (pos-1))
+               {
+                    switch (method)
+                    {
+                         case 0:  // 前插入
+                              if(pos == 1)
+                              {
+                                   pre->next = pInsert;
+                                   pInsert->next = L;
+                                   phead = pInsert;
+                                   printf("在第%d个结点前插入结点成功！\n",pos);
+                              }
+                              else
+                              {
+                                   pre->next = pInsert;
+                                   pInsert->next = L;
+                                   printf("在第%d个结点前插入结点成功！\n",pos);
+                              }
+                              
+                              break;
+                         case 1: // 后插入
+                              pInsert->next = L->next;
+                              L->next = pInsert;
+                              printf("在第%d个结点后插入结点成功！\n",pos);
+                              break;
+                         
+                         default:
+                              break;
+                    }  // end switch
+
+               } // end if
+
+          } // end for     
+          
+          return phead;
 }
